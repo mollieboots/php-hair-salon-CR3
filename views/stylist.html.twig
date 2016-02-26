@@ -18,11 +18,11 @@
                 <h3>{{ client.getName }}</h3>
 
                 <form class="form-group" action="/client/{{client.getId}}/edit">
-                    <button class="btn btn-success" type="submit" name="button">edit this client</button>
+                    <button class="btn btn-warning" type="submit" name="button">edit this client</button>
                 </form>
-                <form class="form-group" action="/client/{{client.getId}}/delete" method="post">
+                <form display="inline" class="form-group" action="/client/{{client.getId}}/delete" method="post">
                     <input name="_method" type="hidden" value="delete">
-                    <button class="btn btn-success" type="submit" name="button">delete this client</button>
+                    <button class="btn btn-danger" type="submit" name="button">delete this client</button>
                 </form>
 
                 {% endfor %}
@@ -39,7 +39,7 @@
             </form>
 
             <form class="" action="/">
-                <button class="btn btn-success" type="submit" name="button">Home</button>
+                <button class="btn btn-primary" type="submit" name="button">Home</button>
             </form>
         </div>
 
