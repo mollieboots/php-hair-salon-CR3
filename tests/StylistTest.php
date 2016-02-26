@@ -107,5 +107,49 @@
             //Assert
             $this->assertEquals("Korra", $test_stylist->getName());
         }
+
+        function test_getClients()
+        {
+            //Arrange
+            $name = "Bob";
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+
+            $stylist_id = $test_stylist->getId();
+
+            $name = "Nicholas";
+            $test_client = new Client($name, $id, $stylist_id);
+            $test_client->save();
+
+            $name2 = "Marky Mark";
+            $test_client2 = new Client($name2, $id, 3);
+            $test_client2->save();
+
+            //Act
+            $result = $test_stylist->getClients();
+
+            //Assert
+            $this->assertEquals([$test_client], $result);
+        }
+
+        function test_find()
+        {
+            //Arrange
+            $name = "Morgan";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+
+            $name2 = "Franny";
+            $test_stylist2 = new Stylist($name2);
+            $test_stylist2->save();
+
+            //Act
+            $result = Stylist::find($test_stylist2->getId());
+
+            //Assert
+            $this->assertEquals($test_stylist2, $result);
+
+        }
     }
  ?>
