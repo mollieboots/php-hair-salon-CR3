@@ -35,6 +35,27 @@
             //Assert
             $this->assertEquals($name, $result);
         }
+
+        function test_getId()
+        {
+            //Arrange
+            $name = "Ellie";
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+
+            $client_name = "Lady Gaga";
+            $stylist_id = $test_stylist->getId();
+
+            $test_client = new Client($client_name, $id, $stylist_id);
+            $test_client->save();
+
+            //Act
+            $result = $test_client->getId();
+
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
     }
 
  ?>

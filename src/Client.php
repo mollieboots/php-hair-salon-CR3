@@ -32,6 +32,13 @@
             return $this->stylist_id;
         }
 
+        function save()
+        {
+            $GLOBALS['DB']->exec("INSERT INTO clients (name, id, stylist_id) VALUES ('{$this->getName()}', {$this->getStylistId()});");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+
         static function deleteAll(){
             $GLOBALS['DB']->exec("DELETE FROM clients");
         }
