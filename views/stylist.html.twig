@@ -1,10 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <meta charset="utf-8">
-        <title></title>
+        <title>Mollie's Hair Salon - Stylists</title>
     </head>
     <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1> {{ stylist.getName }}</h1>
+            </div>
+
+            <a href="/stylist/{{ stylist.getId }}/edit">Edit this Stylist</a>
+
+            {% if clients is not empty %}
+                {% for client in clients %}
+                <h3>{{ client.getName }}</h3>
+
+                <form class="form-group" action="/client/{{client.getId}}/edit">
+                    <button class="btn btn-success" type="submit" name="button">edit this client</button>
+                </form>
+                <form class="form-group" action="/client/{{client.getId}}/delete" method="post">
+                    <input name="_method" type="hidden" value="delete">
+                    <button class="btn btn-success" type="submit" name="button">delete this client</button>
+                </form>
+
+                {% endfor %}
+            {% else %}
+                <h2>This Stylist has no clients right now :(</h2>
+            {% endif %}
+
+            <form class="form-group" action="/clients" method="post">
+                <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId() }}">
+                <label for='name'>Client Name:</label>
+                <input id='name' name='name' type='text' required>
+
+                <button class="btn btn-success" type="submit" name="button">Add Client</button>
+            </form>
+
+            <form class="" action="/">
+                <button class="btn btn-success" type="submit" name="button">Home</button>
+            </form>
+        </div>
 
     </body>
 </html>

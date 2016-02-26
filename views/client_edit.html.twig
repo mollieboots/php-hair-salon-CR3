@@ -7,28 +7,21 @@
     </head>
     <body>
         <div class="container">
-            <h1>Update Stylist: {{ stylist.getName }} </h1>
-
-            <form action="/stylist/{{ stylist.getId }}" method="post">
+            <div class="jumbotron">
+                <h1>Edit Client: {{ client.getName }}</h1>
+            </div>
+            <form class="" action="/client/{{ client.getId }}" method="post">
                 <input name="_method" type="hidden" value="patch">
+                <label for="new_client_name">Update Client Name:</label>
+                <input type="text" name="new_client_name" value="">
 
-                <label for="new_name">Rename this stylist</label>
-                <input id="new_name" name="new_name" type="text">
-
-                <button class="btn btn-success" type="submit">Update</button>
-            </form>
-
-            <form action="/stylist/{{ stylist.getId }}/delete" method="post">
-                <input name="_method" type="hidden" value="delete">
-
-                <button class="btn btn-success" type="submit">Delete this stylist</button>
+                <button type="submit" class="btn btn-success" name="button">Update</button>
             </form>
 
             <form class="" action="/">
                 <button class="btn btn-success" type="submit" name="button">Home</button>
             </form>
         </div>
-
 
     </body>
 </html>
